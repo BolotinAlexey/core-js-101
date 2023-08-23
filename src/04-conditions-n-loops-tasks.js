@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable object-curly-newline */
 /* eslint-disable prefer-const */
 /* *************************************************************************************************
@@ -281,7 +282,12 @@ function isCreditCardNumber(ccn) {
   let left = ccn.toString().slice(0, -1);
   const twoDig = (d) => (d.length === 2 ? +d - 9 : +d);
 
-  const mod10 = (str) => str.split('').reverse().reduce((a, b, i) => (i % 2 ? a + +b : a + twoDig(`${b * 2}`)), 0);
+  const mod10 = (str) =>
+    // eslint-disable-next-line implicit-arrow-linebreak
+    str
+      .split('')
+      .reverse()
+      .reduce((a, b, i) => (i % 2 ? a + +b : a + twoDig(`${b * 2}`)), 0);
   return !((mod10(left.toString()) + +right) % 10);
   // throw new Error('Not implemented');
 }
@@ -302,7 +308,13 @@ function isCreditCardNumber(ccn) {
  */
 function getDigitalRoot(num) {
   return num > 9
-    ? +getDigitalRoot(num.toString().split('').reduce((a, b) => +b + a, 0))
+    ? +getDigitalRoot(
+        num
+          .toString()
+          .split('')
+          // eslint-disable-next-line comma-dangle
+          .reduce((a, b) => +b + a, 0)
+      )
     : num;
   // throw new Error('Not implemented');
 }
@@ -385,11 +397,15 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(pathes) {
-  // return pathes.reduce((path, acc) => path.reduce(a, b, i), '')
-  // for (let i = 0; i < pathes.length; i += 1) {
-  //   const ch = pathes[i];
-    
-  // }
+  let result = [];
+  const pathArr = pathes.map((el) => el.split('/'));
+  const first = pathArr[0];
+  for (let i = 0; i < first.length; i += 1) {
+    const isSame = pathArr.filter((el) => el[i] === first[i]).length === pathArr.length;
+if (isSame) result.push(first[i]);
+else break;
+  }
+  return result.length ? `${result.join('/')}/` : '';
   // throw new Error('Not implemented');
 }
 
@@ -411,8 +427,19 @@ function getCommonDirectoryPath(pathes) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
+function getMatrixProduct(m1, m2) {
+ const result = [];
+  for (let i = 0; i < m1.length; i += 1) {
+    const row = [];
+
+    for (let j = 0; j < m2.length; j += 1) {
+      const res = m2.reduce((a, b, ind) => a + m1[i][ind] * m2[ind][j], 0);
+      if (res) row.push(res);
+    }
+    result.push(row);
+  }
+  return result;
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -445,8 +472,9 @@ function getMatrixProduct(/* m1, m2 */) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(pos) {
+  // throw new Error('Not implemented');
+  const isWinRow = pos.find((row) => row.filter((el) => el = row[0]))
 }
 
 module.exports = {
