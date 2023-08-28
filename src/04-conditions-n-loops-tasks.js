@@ -161,14 +161,14 @@ function doRectanglesOverlap(r1, r2) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(circle, point) {
-  const {
-    center: { x: cx, y: cy },
-    radius: r,
-  } = circle;
-  const { x, y } = point;
-  return (cx - x) ** 2 + (cy - y) ** 2 < r * r;
-  // throw new Error('Not implemented');
+function isInsideCircle() {
+  // const {
+  //   center: { x: cx, y: cy },
+  //   radius: r,
+  // } = circle;
+  // const { x, y } = point;
+  // return (cx - x) ** 2 + (cy - y) ** 2 < r * r;
+  throw new Error('Not implemented');
 }
 
 /**
@@ -182,14 +182,14 @@ function isInsideCircle(circle, point) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(str) {
-  const useChar = [];
-  return str.split('').find((el1, i, arr) => {
-    const con = !useChar.includes(el1);
-    useChar.push(el1);
-    return arr.findLastIndex((el2) => el1 === el2) === i && con;
-  });
-  // throw new Error('Not implemented');
+function findFirstSingleChar() {
+  // const useChar = [];
+  // return str.split('').find((el1, i, arr) => {
+  //   const con = !useChar.includes(el1);
+  //   useChar.push(el1);
+  //   return arr.findLastIndex((el2) => el1 === el2) === i && con;
+  // });
+  throw new Error('Not implemented');
 }
 
 /**
@@ -235,9 +235,9 @@ function getIntervalString(a, b, isStart, isEnd) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString() {
-  // return str.split('').reverse().join('');
-  throw new Error('Not implemented');
+function reverseString(str) {
+  return str.split('').reverse().join('');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -252,8 +252,9 @@ function reverseString() {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger() {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  return +num.toString().split('').reverse().join('');
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -276,17 +277,17 @@ function reverseInteger() {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber() {
-  // const right = ccn.toString().slice(-1);
-  // let left = ccn.toString().slice(0, -1);
-  // const twoDig = (d) => (d.length === 2 ? +d - 9 : +d);
+function isCreditCardNumber(ccn) {
+  const right = ccn.toString().slice(-1);
+  let left = ccn.toString().slice(0, -1);
+  const twoDig = (d) => (d.length === 2 ? +d - 9 : +d);
 
-  // const mod10 = (str) => str
-  //     .split('')
-  //     .reverse()
-  //     .reduce((a, b, i) => (i % 2 ? a + +b : a + twoDig(`${b * 2}`)), 0);
-  // return !((mod10(left.toString()) + +right) % 10);
-  throw new Error('Not implemented');
+  const mod10 = (str) => str
+      .split('')
+      .reverse()
+      .reduce((a, b, i) => (i % 2 ? a + +b : a + twoDig(`${b * 2}`)), 0);
+  return !((mod10(left.toString()) + +right) % 10);
+  // throw new Error('Not implemented');
 }
 
 /**
