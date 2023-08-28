@@ -183,12 +183,13 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-  const useChar = [];
-  return str.split('').find((el1, i, arr) => {
-    const con = !useChar.includes(el1);
-    useChar.push(el1);
-    return arr.findLastIndex((el2) => el1 === el2) === i && con;
-  });
+  const pass = [];
+  const arr = str.split('');
+  for (let i = 0; i < arr.length; i += 1) {
+    if (i === str.lastIndexOf(arr[i]) && !pass.includes(arr[i])) return arr[i];
+    pass.push(arr[i]);
+  }
+  return null;
   // throw new Error('Not implemented');
 }
 
