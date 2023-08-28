@@ -182,14 +182,14 @@ function isInsideCircle(circle, point) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar() {
-  // const useChar = [];
-  // return str.split('').find((el1, i, arr) => {
-  //   const con = !useChar.includes(el1);
-  //   useChar.push(el1);
-  //   return arr.findLastIndex((el2) => el1 === el2) === i && con;
-  // });
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  const useChar = [];
+  return str.split('').find((el1, i, arr) => {
+    const con = !useChar.includes(el1);
+    useChar.push(el1);
+    return arr.findLastIndex((el2) => el1 === el2) === i && con;
+  });
+  // throw new Error('Not implemented');
 }
 
 /**
