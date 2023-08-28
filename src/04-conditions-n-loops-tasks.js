@@ -161,14 +161,14 @@ function doRectanglesOverlap(r1, r2) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle() {
-  // const {
-  //   center: { x: cx, y: cy },
-  //   radius: r,
-  // } = circle;
-  // const { x, y } = point;
-  // return (cx - x) ** 2 + (cy - y) ** 2 < r * r;
-  throw new Error('Not implemented');
+function isInsideCircle(circle, point) {
+  const {
+    center: { x: cx, y: cy },
+    radius: r,
+  } = circle;
+  const { x, y } = point;
+  return (cx - x) ** 2 + (cy - y) ** 2 < r * r;
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -182,14 +182,14 @@ function isInsideCircle() {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar() {
-  // const useChar = [];
-  // return str.split('').find((el1, i, arr) => {
-  //   const con = !useChar.includes(el1);
-  //   useChar.push(el1);
-  //   return arr.findLastIndex((el2) => el1 === el2) === i && con;
-  // });
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  const useChar = [];
+  return str.split('').find((el1, i, arr) => {
+    const con = !useChar.includes(el1);
+    useChar.push(el1);
+    return arr.findLastIndex((el2) => el1 === el2) === i && con;
+  });
+  // throw new Error('Not implemented');
 }
 
 /**
@@ -214,13 +214,13 @@ function findFirstSingleChar() {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString() {
+function getIntervalString(a, b, isStart, isEnd) {
   // eslint-disable-next-line no-param-reassign
-  // if (a > b) [a, b] = [b, a];
-  // const start = isStart ? '[' : '(';
-  // const end = isEnd ? ']' : ')';
-  // return `${start + a}, ${b + end}`;
-  throw new Error('Not implemented');
+  if (a > b) [a, b] = [b, a];
+  const start = isStart ? '[' : '(';
+  const end = isEnd ? ']' : ')';
+  return `${start + a}, ${b + end}`;
+  // throw new Error('Not implemented');
 }
 
 /**
