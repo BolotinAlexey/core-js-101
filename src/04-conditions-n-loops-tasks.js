@@ -282,9 +282,7 @@ function isCreditCardNumber(ccn) {
   let left = ccn.toString().slice(0, -1);
   const twoDig = (d) => (d.length === 2 ? +d - 9 : +d);
 
-  const mod10 = (str) =>
-    // eslint-disable-next-line implicit-arrow-linebreak
-    str
+  const mod10 = (str) => str
       .split('')
       .reverse()
       .reduce((a, b, i) => (i % 2 ? a + +b : a + twoDig(`${b * 2}`)), 0);
@@ -312,8 +310,7 @@ function getDigitalRoot(num) {
         num
           .toString()
           .split('')
-          // eslint-disable-next-line comma-dangle
-          .reduce((a, b) => +b + a, 0)
+          .reduce((a, b) => +b + a, 0),
       )
     : num;
   // throw new Error('Not implemented');
